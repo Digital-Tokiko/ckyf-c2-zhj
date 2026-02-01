@@ -4,7 +4,6 @@
 
 #include "Robot.h"
 #include <iostream>
-
 #include "RobotManager.h"
 
 void Robot::Upgrade(const uint8_t to_level) {
@@ -28,19 +27,18 @@ void Robot::Upgrade(const uint8_t to_level) {
 }
 
 void Robot::TakeDamageForHeat(const uint16_t heat_change) {
-    if (heat_change>GetHeat()) {
-        if (GetHeat()>GetMaxHeat()) {
-            TakeDamage(GetHeat()-GetMaxHeat());
+    if (heat_change > GetHeat()) {
+        if (GetHeat() > GetMaxHeat()) {
+            TakeDamage(GetHeat() - GetMaxHeat());
         }
         SetHeat(0);
         return;
     }
 
-    if (GetHeat()-heat_change < GetMaxHeat()) {
-        TakeDamage(GetHeat()-GetMaxHeat());
-    }
-    else {
+    if (GetHeat() - heat_change < GetMaxHeat()) {
+        TakeDamage(GetHeat() - GetMaxHeat());
+    } else {
         TakeDamage(heat_change);
     }
-    SetHeat(GetHeat()-heat_change);
+    SetHeat(GetHeat() - heat_change);
 }
